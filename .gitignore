@@ -1,0 +1,16 @@
+# Editor / assistant tooling
+.claude/
+.vscode/
+.idea/
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Node (only used by tools/build.js, which needs no dependencies)
+node_modules/
+npm-debug.log*
+
+# Local scratch
+*.local

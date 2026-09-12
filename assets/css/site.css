@@ -1,0 +1,749 @@
+/* ==========================================================================
+   Khosla — static rebuild of sites.google.com/view/khoslademo
+   Every value here was measured from the live published site.
+   ========================================================================== */
+
+:root {
+  /* Palette */
+  --sidebar-bg: #1c1c1c;
+  --sidebar-fg: #f9f9f9;
+  --band: #c5b1a2;        /* content sections            rgb(197,177,162) */
+  --band-alt: #cec3ba;    /* footer + banner base colour rgb(206,195,186) */
+  --heading: #493b31;     /* headings / links            rgb(73,59,49)    */
+  --text: #1c1c1c;        /* body copy                   rgb(28,28,28)    */
+  --rule: rgba(0, 0, 0, .15);
+  --scrim: #1f2020;       /* banner darkening overlay    rgb(31,32,32)    */
+  --dot: #c7c7c7;
+
+  /* Type */
+  --sans: Roboto, Arial, Helvetica, sans-serif;
+  --serif: "Roboto Serif", Georgia, "Times New Roman", serif;
+
+  /* Metrics */
+  --sidebar-w: 250px;
+  --grid-max: 1280px;
+  --grid-pad: 48px;
+  --col-pad: 13.66px;   /* inner gutter on every grid column */
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: normal;
+}
+
+img { max-width: 100%; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 16px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-fg);
+}
+.skip-link:focus { left: 0; }
+
+/* --------------------------------------------------------------- Sidebar */
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-w);
+  max-width: 80%;
+  background: var(--sidebar-bg);
+  z-index: 10;
+  overflow-y: auto;
+}
+
+/* Wordmark set to echo the logo on the banner: same serif, uppercase, widely
+   letter-spaced. The logo's own green (#243b21) sits at 1.4:1 against this
+   sidebar, so it is set in the cream used for the rest of the nav. */
+.nav__brand {
+  display: block;
+  /* Left edge matches the nav links below (36px list inset + 4px link pad). */
+  padding: 48px 24px 0 40px;
+  color: var(--sidebar-fg);
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav__list {
+  margin: 62px 0 0;
+  padding: 0 12px 0 36px;
+  list-style: none;
+}
+
+.nav__item + .nav__item { margin-top: 16px; }
+
+.nav__link {
+  display: block;
+  padding-left: 4px;
+  color: var(--sidebar-fg);
+  font-size: 16px;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.nav__link:hover { text-decoration: underline; }
+.nav__link.is-current { font-weight: 700; }
+
+/* ------------------------------------------------------------ Page shell */
+
+.page { margin-left: var(--sidebar-w); }
+
+/* -------------------------------------------------------------- Sections */
+
+/* Flex rather than table: the banner image is an absolutely positioned child,
+   and in a CSS table it gets wrapped in an anonymous cell and steals width.
+   `align-items: center` reproduces the original's vertical-align: middle. */
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 24px 0;
+  background: var(--band);
+}
+
+/* Each section's band colour is emitted inline from the measured original:
+   plain banners use --band, image banners --band-alt, footers --band-alt.
+   The value below is only a fallback. */
+
+/* A rule-only section carries no padding of its own. */
+.section--rule { padding: 0; }
+
+/* Banner height comes from the original as a custom property so that narrow
+   screens can cap it with min() rather than being stuck at 900px. */
+.section--banner { min-height: var(--banner-h, 0); }
+
+.section__media {
+  position: absolute;
+  inset: 0;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.section__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+}
+
+.section__body { width: 100%; }
+
+.grid {
+  position: relative;
+  max-width: var(--grid-max);
+  margin: 0 auto;
+  padding: 0 var(--grid-pad);
+  display: flex;
+  align-items: flex-start;
+}
+
+.col {
+  padding: 0 var(--col-pad);
+  min-width: 0;
+}
+
+/* ---------------------------------------------------------------- Blocks */
+
+/* Blocks stack flush; their inset is emitted per block from the measured
+   original, because Google Sites varies it (8px, 14px 8px, 0 ...).
+   The generic sans-serif here is deliberate: it is the block's strut font in
+   the original, and bare <br> spacers are measured against it. */
+.block {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: normal;
+}
+
+/* Horizontal rule block */
+.rule {
+  height: 2px;
+  margin: 8.5px 0 0;
+  border: 0;
+  background: var(--rule);
+}
+
+/* ------------------------------------------------------------------ Type */
+
+.t { margin: 0; }
+
+/* Preserved tab characters (the footer link row relies on them). */
+.tab { white-space: pre; }
+
+h1.t, h2.t, h3.t, h4.t, h5.t, h6.t {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--heading);
+}
+
+h1.t { font-size: 45.3333px; line-height: 1.38; }
+h2.t { font-size: 24px;      line-height: 1.5; }
+h3.t { font-size: 18.6667px; line-height: 1.5; }
+
+/* --------------------------------------------------- Section headings
+   A page title, sections within it, and sub-headings inside those need three
+   distinct sizes. Without this the About page runs 45 / 45 / 45 with 24px
+   sub-headings beneath, so nothing reads as belonging to anything.
+   -------------------------------------------------------------------- */
+
+h1.t--section,
+h2.t--section {
+  font-size: 32px;
+  line-height: 1.38;
+}
+
+p.t {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--text);
+}
+
+ul.t, ol.t {
+  margin: 0;
+  padding-left: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #000;
+}
+
+ul.t { list-style: square; }
+
+ul.t li, ol.t li {
+  margin: 0 0 0 20px;
+  font-family: var(--sans);
+}
+
+ul.t li + li, ol.t li + li { margin-top: 6px; }
+
+/* Each list item wraps a paragraph that carries the real line-height. */
+ul.t li > p, ol.t li > p { padding: 0; }
+
+.t a { color: inherit; text-decoration: underline; }
+.t a:hover { text-decoration: none; }
+
+/* Doubled class so this outranks `h1.t { color: var(--heading) }`, which is
+   more specific than a single class and would otherwise win. */
+.t.t--on-media { color: var(--sidebar-fg); }
+.t.t--on-media a { color: inherit; }
+
+.ta-l { text-align: left; }
+.ta-c { text-align: center; }
+.ta-r { text-align: right; }
+.ta-j { text-align: justify; }
+
+/* ---------------------------------------------------------------- Images */
+
+.media {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.media-link { display: block; }
+
+/* -------------------------------------------------------------- Carousel */
+
+.carousel { position: relative; }
+
+.carousel__viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel__slide {
+  position: absolute;
+  inset: 0;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.carousel__slide.is-active { opacity: 1; }
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  padding-top: 32.8px;
+}
+
+.carousel__dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--dot);
+  cursor: pointer;
+}
+
+.carousel__dot.is-active { background: var(--heading); }
+
+/* ------------------------------------------------------------------ Price
+   Product pages: price and the order prompt beneath it.
+   -------------------------------------------------------------------- */
+
+.price {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 32px;
+  line-height: 44px;
+  font-weight: 400;
+  color: var(--heading);
+}
+
+/* Price shown on a Home product tile: secondary to the product name. */
+.price--tile {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.order-note {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 23px;
+  color: rgba(28, 28, 28, .82);
+  text-wrap: balance;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 28px;
+  border: 0;
+  background: var(--heading);
+  color: #f9f9f9;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover { background: #3a2f27; }
+.button:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+/* ------------------------------------------------------------------ Forms */
+
+.form {
+  margin: 0;
+  font-family: var(--sans);
+  text-align: left;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.form__field + .form__field { margin-top: 16px; }
+
+.form__input,
+.form__textarea {
+  display: block;
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid rgba(0, 0, 0, .25);
+  border-radius: 0;
+  background: #fdfcfb;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.form__textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.form__input:focus,
+.form__textarea:focus {
+  outline: 2px solid var(--heading);
+  outline-offset: -1px;
+  border-color: var(--heading);
+}
+
+/* Honeypot — hidden from people, visible to bots that fill everything in. */
+.form__botcheck {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.form__status {
+  margin: 12px 0 0;
+  min-height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.form__status.is-error { color: #8a2b21; }
+.form__status.is-success { color: #2f5d3a; }
+
+/* Ordering instructions above the contact form.
+   `text-wrap: balance` evens out the line lengths — centred copy with ragged
+   lines and a two-word orphan on the last one reads badly. The wider measure
+   also drops it from four lines to three. */
+.order-intro {
+  max-width: 640px;
+  margin: 0 auto 24px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 23px;
+  color: rgba(28, 28, 28, .82);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* The contact form sits in a full-width column, so cap it: full-bleed
+   inputs across 1000px+ are unpleasant to fill in. */
+.form--contact {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The contact and review forms sit as centred blocks under centred copy, so
+   centre their button and status too. Labels and inputs stay left aligned,
+   which is what people expect when filling a form in. */
+.form--contact .button,
+.form--review .button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form--contact .form__status,
+.form--review .form__status { text-align: center; }
+
+/* Subscribe form: input and button side by side, stacking when narrow. */
+.form--subscribe .form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.form--subscribe .form__input { flex: 1 1 220px; width: auto; }
+.form--subscribe .button { margin-top: 0; padding: 12px 24px; }
+
+@media (max-width: 479px) {
+  .form--subscribe .form__row { display: block; }
+  .form--subscribe .form__input { width: 100%; }
+  .form--subscribe .button { margin-top: 12px; width: 100%; }
+}
+
+/* ------------------------------------------------------- Footer quick links
+   Rebuilt as a real list: the original was a pasted run of links separated by
+   tabs and non-breaking spaces, with underlines bleeding across the gaps.
+   -------------------------------------------------------------------- */
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 21px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quick-links a {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--heading);
+  text-decoration: underline;
+}
+
+.quick-links a:hover { text-decoration: none; }
+
+@media (max-width: 479px) {
+  .quick-links { gap: 8px 20px; }
+}
+
+/* ---------------------------------------------------------------- Reviews
+   Customer reviews, laid out three across like the testimonials they
+   replace: quote in the serif, name bold and centred beneath.
+   -------------------------------------------------------------------- */
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 28px;
+  margin: 0;
+  padding: 0 8px;
+}
+
+.reviews.is-unavailable { display: none; }
+
+.review { margin: 0; }
+
+.review__body {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 18.6667px;
+  line-height: 28px;
+  font-weight: 400;
+  color: var(--heading);
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.review__name {
+  margin: 16px 0 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+}
+
+.reviews__empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  text-align: center;
+}
+
+.form--review {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  .reviews {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Character counter under a form field. */
+.form__hint {
+  margin: 6px 0 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(28, 28, 28, .65);
+  text-align: right;
+}
+
+.form__hint.is-short { color: rgba(28, 28, 28, .85); }
+.form__hint.is-warn { color: #8a2b21; }
+
+/* ==========================================================================
+   Responsive
+
+   Three steps down from the desktop layout:
+     < 1280px  the fixed sidebar becomes a sticky top bar
+     <  768px  grid columns stack, type steps down, banners are capped
+     <  480px  tightest gutters and the smallest type step
+
+   The original collapsed to a hamburger drawer, zeroed every section's
+   vertical padding and dropped gutters to 5px. This is deliberately not that:
+   four nav links fit on one row, so nothing needs hiding behind a menu.
+   ========================================================================== */
+
+/* ----------------------------------------------- Below the sidebar layout */
+
+@media (max-width: 1279px) {
+  .sidebar {
+    position: sticky;
+    inset: 0 auto auto 0;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    z-index: 20;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 32px;
+    padding: 14px 32px;
+  }
+
+  .nav__brand {
+    padding: 0;
+    margin-right: auto;
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .nav__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+  }
+
+  .nav__item + .nav__item { margin-top: 0; }
+
+  .nav__link { padding-left: 0; line-height: 34px; }
+
+  .page { margin-left: 0; }
+
+  .grid { padding: 0 32px; }
+
+  /* Artwork banners carry the logo, wordmark and badges, so cropping loses
+     the point of them. Once the banner is full width it is narrower than the
+     image's own proportions, so give the section the image's aspect ratio and
+     let it show whole rather than filling a fixed height. */
+  .section--artwork {
+    min-height: 0;
+    /* !important because the section's padding is emitted inline by the
+       generator to match the original desktop layout. */
+    padding: 0 !important;
+    aspect-ratio: var(--banner-ratio);
+  }
+
+  .section--artwork .section__media { background-size: contain; }
+}
+
+/* ------------------------------------------------------- Stacked columns */
+
+@media (max-width: 767px) {
+  .nav { gap: 2px 24px; padding: 12px 24px; }
+  .nav__brand { font-size: 22px; line-height: 30px; }
+  .nav__list { gap: 2px 18px; }
+  .nav__link { font-size: 15px; line-height: 30px; }
+
+  .grid {
+    display: block;
+    padding: 0 24px;
+  }
+
+  .col {
+    width: 100% !important;
+    padding: 0;
+  }
+
+  .col + .col { margin-top: 28px; }
+
+  /* Spacer columns exist only to position content on wide screens. */
+  .col--empty { display: none; }
+
+  /* A 900px banner is most of a phone screen before any content shows.
+     Artwork banners are excluded: they size to the image's own ratio. */
+  .section--banner:not(.section--artwork) { min-height: min(var(--banner-h, 0), 64vh); }
+
+  h1.t { font-size: 34px; }
+  h2.t { font-size: 20px; }
+  h3.t { font-size: 17px; }
+  h1.t--section, h2.t--section { font-size: 25px; }
+
+  .price { font-size: 28px; line-height: 38px; }
+  .price--tile { font-size: 19px; line-height: 27px; }
+
+  .form--contact,
+  .form--review,
+  .order-intro { max-width: none; }
+
+  .button { width: 100%; text-align: center; }
+  .quick-links { gap: 10px 22px; }
+}
+
+/* ------------------------------------------------------------ Small phones */
+
+@media (max-width: 479px) {
+  .nav { padding: 12px 16px; }
+  .grid { padding: 0 16px; }
+
+  h1.t { font-size: 29px; }
+  h2.t { font-size: 19px; }
+  h1.t--section, h2.t--section { font-size: 22px; }
+
+  .price { font-size: 26px; line-height: 34px; }
+  .section--banner:not(.section--artwork) { min-height: min(var(--banner-h, 0), 58vh); }
+  .quick-links { gap: 10px 18px; }
+}
+
+
+/* ------------------------------------------------- About page section nav
+   A horizontal row of links to each section of the page, replacing the
+   original's stacked list of anchors.
+   -------------------------------------------------------------------- */
+
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-nav a {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--heading);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(73, 59, 49, .35);
+  padding-bottom: 2px;
+}
+
+.page-nav a:hover { border-bottom-color: var(--heading); }
+
+/* Smooth jump, and keep the target clear of the sticky bar on small screens. */
+html { scroll-behavior: smooth; }
+
+.t--section,
+h1.t[id],
+h2.t[id] { scroll-margin-top: 24px; }
+
+@media (max-width: 1279px) {
+  .t--section,
+  h1.t[id],
+  h2.t[id] { scroll-margin-top: 90px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
