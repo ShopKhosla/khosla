@@ -262,6 +262,13 @@ ul.t li > p, ol.t li > p { padding: 0; }
 
 .media-link { display: block; }
 
+/* Home product tiles are square, so their names and prices sit on the same
+   line whatever shape the source photograph is. */
+.media-link .media {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
 /* -------------------------------------------------------------- Carousel */
 
 .carousel { position: relative; }
@@ -313,6 +320,40 @@ ul.t li > p, ol.t li > p { padding: 0; }
   font-size: 32px;
   line-height: 44px;
   font-weight: 400;
+  color: var(--heading);
+}
+
+/* Size and price list on a product page. Sizes left, prices right, so the
+   amounts line up and can be compared down the column. */
+.prices {
+  max-width: 260px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+}
+
+.prices li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(73, 59, 49, .18);
+}
+
+.prices li:last-child { border-bottom: 0; }
+
+.prices .size {
+  font-size: 15px;
+  line-height: 24px;
+  color: rgba(28, 28, 28, .8);
+}
+
+.prices .amount {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 28px;
   color: var(--heading);
 }
 

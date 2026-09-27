@@ -11,6 +11,7 @@ const IMG = {
   'contact': { banner: 'contact-banner.jpg' },
   'faq': { banner: 'faq-banner.jpg' },
   'tallow-cream': { carousel: [['tallow-cream-1.jpg', 'tallow-cream-2.jpg']] },
+  'khosla-leave-in': { carousel: [['leave-in-1.jpg']] },
   'khosla-hair-oil': { carousel: [['hair-oil-1.jpg', 'hair-oil-2.jpg']] },
   'terms-of-policy': { banner: 'terms-banner.jpg' },
   'refund-policy': { banner: 'refund-banner.jpg' },
@@ -128,7 +129,7 @@ const TYPOS = [
   ['About Khusla', 'About Khosla'],
 ];
 
-const ORDER_STEPS = 'Message us with the products and quantity you’d like and where to ship them. '
+const ORDER_STEPS = 'Message us with the products, sizes and quantities you’d like and where to ship them. '
   + 'We’ll reply with your total and payment details, and your order ships as soon as payment is received.';
 
 function orderIntro() {
@@ -213,9 +214,38 @@ const ARTWORK_BANNERS = {
 const W3F_KEY = 'c82a5ca3-6755-4863-adb9-48fd931a3176';
 
 const PRICES = {
-  'tallow-cream': { price: '$38', name: 'Khosla Tallow Cream' },
-  'khosla-hair-oil': { price: '$20', name: 'Khosla Hair Oil' },
+  'tallow-cream': {
+    name: 'Khosla Tallow Cream',
+    sizes: [['250 g', '250 EGP'], ['500 g', '550 EGP'], ['1000 g', '1,100 EGP']],
+  },
+  'khosla-leave-in': {
+    name: 'Khosla Leave In',
+    sizes: [['250 g', '300 EGP'], ['500 g', '600 EGP'], ['1000 g', '1,150 EGP']],
+  },
+  'khosla-hair-oil': {
+    name: 'Khosla Hair Oil',
+    sizes: [['100 ml', '500 EGP']],
+  },
 };
+
+/* Price span for the Home tiles: cheapest to dearest, so the range is honest
+   at a glance rather than anchoring on the smallest size. En dash, being a
+   range. A single-size product just shows its price. */
+function fromPrice(slug) {
+  const sizes = PRICES[slug].sizes;
+  if (sizes.length < 2) return sizes[0][1];
+  const low = sizes[0][1].replace(/\s*EGP$/, '');
+  return low + ' – ' + sizes[sizes.length - 1][1];
+}
+
+/* Size and price list shown on a product page. */
+function priceList(slug) {
+  const rows = PRICES[slug].sizes.map(function (sz) {
+    return '            <li><span class="size">' + sz[0] + '</span>'
+         + '<span class="amount">' + sz[1] + '</span></li>';
+  }).join('\n');
+  return '          <ul class="prices">\n' + rows + '\n          </ul>';
+}
 
 function hidden(name, value) {
   return '            <input type="hidden" name="' + name + '" value="' + value + '">';
@@ -285,6 +315,28 @@ function ruleSection() {
     cols: [{ width: 100, pad: '0 0 7.5px', html: '          <hr class="rule">' }],
   });
 }
+
+/* The Leave In page did not exist in the original site, so it borrows the
+   Tallow Cream page's structure: same banner, same image block, same footer. */
+(function addLeaveIn() {
+  const base = MODEL['tallow-cream'];
+  if (!base || MODEL['khosla-leave-in']) return;
+  const clone = JSON.parse(JSON.stringify(base));
+  clone.title = 'Khosla - Leave In';
+  clone.sections.forEach(function (sec) {
+    sec.columns.forEach(function (c) {
+      c.blocks.forEach(function (bl) {
+        bl.items.forEach(function (it) {
+          if (it.kind === 'text' && (it.text || '').indexOf('Khosla Tallow Cream') >= 0) {
+            it.text = 'Khosla Leave In';
+            it.html = it.html.replace('Khosla Tallow Cream', 'Khosla Leave In');
+          }
+        });
+      });
+    });
+  });
+  MODEL['khosla-leave-in'] = clone;
+})();
 
 const ALT = {
   'home-product-tallow-cream.jpg': 'Khosla Tallow Cream jar',
@@ -487,6 +539,10 @@ function build(pg) {
           }
           if (it.kind === 'carousel') {
             const files = (slots.carousel || [])[carIdx++] || [];
+            if (files.length === 1) {
+              // One image is a photograph, not a slideshow.
+              return '          <img class="media" src="assets/img/' + files[0] + '" alt="">';
+            }
             const ratio = round(it.slides[0].rect.w) + ' / ' + round(it.slides[0].rect.h);
             const slides = files.map(function (f, i) {
               return '              <div class="carousel__slide' + (i === 0 ? ' is-active' : '') + '" style="background-image:url(assets/img/' + f + ')" role="group" aria-label="Slide ' + (i + 1) + ' of ' + files.length + '"></div>';
@@ -510,7 +566,7 @@ function build(pg) {
       }).filter(Boolean).join('\n');
       const addition = (colIndex === appendTo) ? s.appendBlock : byCol[colIndex];
       const extra = addition
-        ? '\n        <div class="block" style="padding:0 8px 14px">\n' + addition + '\n        </div>'
+        ? '\n        <div class="block" style="padding:' + (s.appendPad || '0 8px 14px') + '">\n' + addition + '\n        </div>'
         : '';
       const empty = (!blocks.trim() && !extra.trim()) ? ' col--empty' : '';
       return '      <div class="col' + empty + '" style="width:' + wPct + '%">\n' + blocks + extra + '\n      </div>';
@@ -661,11 +717,35 @@ function build(pg) {
           bl.items.forEach(function (it) {
             if (it.kind !== 'imagelink' || !it.href) return;
             const slug = it.href.replace(/^\/view\/khoslademo\/?/, '').split('#')[0];
-            if (PRICES[slug]) byCol[i] = '          <p class="price price--tile ta-c">' + PRICES[slug].price + '</p>';
+            if (PRICES[slug]) byCol[i] = '          <p class="price price--tile ta-c">' + fromPrice(slug) + '</p>';
           });
         });
       });
-      if (Object.keys(byCol).length) s.appendByCol = byCol;
+      if (Object.keys(byCol).length) {
+        /* The original row was two products either side of a spacer. With a
+           third product the spacer becomes a tile, built to match its
+           neighbours: photograph, name, then price. */
+        let empty = -1;
+        s.columns.forEach(function (c, i) {
+          if (empty < 0 && !c.blocks.length && byCol[i] === undefined) empty = i;
+        });
+        if (empty >= 0 && !MODEL.__leaveInTilePlaced) {
+          const pg2 = 'khosla-leave-in';
+          byCol[empty] = [
+            '          <a class="media-link" href="' + pageFile(pg2) + '">',
+            '            <img class="media" src="assets/img/leave-in-1.jpg" alt="Khosla Leave In jar" width="337" height="337">',
+            '          </a>',
+            '          <h2 class="t ta-c" style="margin:14px 0 0"><a href="' + pageFile(pg2) + '">'
+              + '<span style="text-decoration:underline">Leave In</span></a></h2>',
+            /* 14px matches the gap the other tiles get from sitting in
+               separate blocks; this tile is a single block. */
+            '          <p class="price price--tile ta-c" style="margin-top:14px">' + fromPrice(pg2) + '</p>',
+          ].join('\n');
+          MODEL.__leaveInTilePlaced = true;
+          s.appendPad = '0 0 14px';
+        }
+        s.appendByCol = byCol;
+      }
     });
   }
 
@@ -779,8 +859,8 @@ function build(pg) {
         {
           width: 50,
           html: [
-            '          <p class="price ta-c">' + p.price + '</p>',
-            '          <p class="order-note ta-c">Message us with the quantity you’d like and where to ship it. We’ll reply with your total and payment details.</p>',
+            priceList(pg),
+            '          <p class="order-note ta-c">Message us with the size and quantity you’d like and where to ship it. We’ll reply with your total and payment details.</p>',
             '          <p class="ta-c" style="margin:0"><a class="button" href="contact.html">Place an order</a></p>',
           ].join('\n'),
         },
