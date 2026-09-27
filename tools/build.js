@@ -29,6 +29,8 @@ const COPY = {
      than only the email address. */
   '[Your Email Address]': EMAIL_LINK
     + ', or send us a message through our <a href="contact.html">contact form</a>.',
+  'Please visit our Refund Policy page for information about returns and refunds.':
+    'Get in touch and we will sort it out with you.',
   'Please send us a message using the contact form below:':
     'Use the form below to place an order or ask us a question.',
   /* The site takes no payments and uses no payment processor, so the policy
@@ -83,7 +85,6 @@ function ingredientsBlock() {
 const FOOTER_LINKS = [
   ['About Khosla', 'about.html'],
   ['Terms of Policy', 'terms-of-policy.html'],
-  ['Refund Policy', 'refund-policy.html'],
   ['Privacy Policy', 'privacy-policy.html'],
   ['Contact Information', 'contact.html'],
   ['FAQ', 'faq.html'],
@@ -294,7 +295,7 @@ const ALT = {
 
 /* The Coming Soon page is retired: Home is now the site root (index.html),
    so both the old root and /home resolve there. */
-const DROPPED = ['coming-soon'];
+const DROPPED = ['coming-soon', 'refund-policy'];
 const ROOT_PAGE = 'home';
 
 function pageFile(slug) {
