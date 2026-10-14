@@ -22,7 +22,7 @@
   var AR = {
     /* chrome */
     'Skip to main content': 'تخطَّ إلى المحتوى الرئيسي',
-    'Khosla': 'خوصلة',
+    'Khosla': 'خوسلا',
     'Home': 'الرئيسية',
     'About': 'من نحن',
     'Testimonials': 'آراء العملاء',
@@ -30,7 +30,7 @@
 
     /* home */
     'Khosla is a haircare brand built on natural ingredients that nourish and deeply moisturize for healthier-looking hair.':
-      'خوصلة علامة للعناية بالشعر قائمة على مكوّنات طبيعية تغذّي الشعر وترطّبه بعمق ليبدو أكثر صحة.',
+      'خوسلا علامة للعناية بالشعر قائمة على مكوّنات طبيعية تغذّي الشعر وترطّبه بعمق ليبدو أكثر صحة.',
     'Tallow Cream': 'كريم التالو',
     'Leave In': 'ليف إن',
     'Hair oil': 'زيت الشعر',
@@ -46,7 +46,7 @@
 
     /* footer */
     'Quick Link': 'روابط سريعة',
-    'About Khosla': 'عن خوصلة',
+    'About Khosla': 'عن خوسلا',
     'Terms of Policy': 'الشروط والأحكام',
     'Privacy Policy': 'سياسة الخصوصية',
     'Contact Information': 'بيانات التواصل',
@@ -59,7 +59,7 @@
     'How To Use': 'طريقة الاستخدام',
     'Ingredients': 'المكوّنات',
     'Getting the best results from your Khosla products starts with consistency and proper application.':
-      'أفضل نتيجة من منتجات خوصلة تبدأ بالانتظام وبطريقة الاستخدام الصحيحة.',
+      'أفضل نتيجة من منتجات خوسلا تبدأ بالانتظام وبطريقة الاستخدام الصحيحة.',
     'Step 1: Apply': 'الخطوة 1: ضعي المنتج',
     'Follow the instructions provided for your specific product. Apply the recommended amount evenly through your hair or scalp.':
       'اتبعي التعليمات الخاصة بكل منتج، وضعي الكمية الموصى بها بالتساوي على الشعر أو فروة الرأس.',
@@ -74,12 +74,12 @@
     'Avoid excessive heat damage': 'تجنّبي الإفراط في استخدام الحرارة',
     'Maintain a consistent haircare routine': 'حافظي على روتين ثابت للعناية بالشعر',
     'Your hair journey is unique — Khosla is here to support you along the way.':
-      'رحلة شعرك فريدة، وخوصلة هنا لمرافقتك في كل خطوة.',
+      'رحلة شعرك فريدة، وخوسلا هنا لمرافقتك في كل خطوة.',
 
     /* testimonials */
     'Share your Hair Journey': 'شاركينا رحلة شعرك',
     'We\'d love to hear about your experience with Khosla. Leave a testimonial below and let others know how our products worked for you.':
-      'يسعدنا أن نسمع عن تجربتك مع خوصلة. اتركي رأيك أدناه ليعرف الآخرون كيف ساعدتك منتجاتنا.',
+      'يسعدنا أن نسمع عن تجربتك مع خوسلا. اتركي رأيك أدناه ليعرف الآخرون كيف ساعدتك منتجاتنا.',
     'Your name': 'اسمك',
     'Your review': 'رأيك',
     'Post review': 'أرسلي رأيك',
@@ -98,30 +98,30 @@
 
     /* faq */
     'Frequently Asked Questions': 'الأسئلة الشائعة',
-    'What is Khosla?': 'ما هي خوصلة؟',
+    'What is Khosla?': 'ما هي خوسلا؟',
     'Khosla is a haircare brand created to support healthier, stronger, and more nourished hair through carefully selected ingredients and thoughtful formulations.':
-      'خوصلة علامة للعناية بالشعر أُنشئت لدعم شعر أكثر صحة وقوة وتغذية، من خلال مكوّنات مختارة بعناية وتركيبات مدروسة.',
-    'How often should I use Khosla products?': 'كم مرة أستخدم منتجات خوصلة؟',
+      'خوسلا علامة للعناية بالشعر أُنشئت لدعم شعر أكثر صحة وقوة وتغذية، من خلال مكوّنات مختارة بعناية وتركيبات مدروسة.',
+    'How often should I use Khosla products?': 'كم مرة أستخدم منتجات خوسلا؟',
     'Usage depends on the product and your hair needs. Follow the recommended directions provided with each product for the best results.':
       'يعتمد ذلك على المنتج وعلى احتياج شعرك. اتبعي التعليمات المرفقة مع كل منتج للحصول على أفضل نتيجة.',
     'How long does it take to see results?': 'متى تظهر النتائج؟',
     'Everyone’s hair journey is different. Consistent use, proper application, and a healthy hair routine play an important role in achieving your desired results.':
       'رحلة كل شعر مختلفة. الاستخدام المنتظم والتطبيق الصحيح وروتين العناية السليم كلها عوامل مهمة للوصول إلى النتيجة التي تريدينها.',
-    'Are Khosla products suitable for all hair types?': 'هل منتجات خوصلة مناسبة لجميع أنواع الشعر؟',
+    'Are Khosla products suitable for all hair types?': 'هل منتجات خوسلا مناسبة لجميع أنواع الشعر؟',
     'Our products are designed to support a variety of hair types. However, everyone\'s hair is unique, so we recommend choosing products based on your individual hair goals and needs.':
       'منتجاتنا مصمّمة لتناسب أنواعًا متعددة من الشعر. ومع ذلك، شعر كل شخص مختلف، لذا ننصح باختيار المنتج بحسب احتياجك وأهدافك.',
     'Are your products tested on animals?': 'هل تُختبر منتجاتكم على الحيوانات؟',
     'Khosla is committed to responsible and ethical practices.':
-      'خوصلة ملتزمة بممارسات مسؤولة وأخلاقية.',
+      'خوسلا ملتزمة بممارسات مسؤولة وأخلاقية.',
     'Can I return a product?': 'هل يمكنني إرجاع منتج؟',
     'Get in touch and we will sort it out with you.': 'تواصلي معنا وسنحل الأمر معك.',
-    'How can I contact Khosla?': 'كيف أتواصل مع خوصلة؟',
+    'How can I contact Khosla?': 'كيف أتواصل مع خوسلا؟',
     'You can reach us at:': 'يمكنك التواصل معنا عبر:',
 
     /* products */
-    'Khosla Tallow Cream': 'كريم التالو من خوصلة',
-    'Khosla Leave In': 'ليف إن من خوصلة',
-    'Khosla Hair Oil': 'زيت الشعر من خوصلة',
+    'Khosla Tallow Cream': 'كريم التالو من خوسلا',
+    'Khosla Leave In': 'ليف إن من خوسلا',
+    'Khosla Hair Oil': 'زيت الشعر من خوسلا',
     '250 g': '250 جم',
     '500 g': '500 جم',
     '1000 g': '1000 جم',
@@ -139,7 +139,7 @@
     /* terms */
     'Terms of Service': 'شروط الخدمة',
     'Welcome to Khosla. By using our website, you agree to the following terms and conditions.':
-      'أهلًا بك في خوصلة. باستخدامك لموقعنا فإنك توافقين على الشروط والأحكام التالية.',
+      'أهلًا بك في خوسلا. باستخدامك لموقعنا فإنك توافقين على الشروط والأحكام التالية.',
     'Website Use': 'استخدام الموقع',
     'You agree to use our website for lawful purposes and not to misuse our content, products, or services.':
       'توافقين على استخدام الموقع لأغراض مشروعة، وعلى عدم إساءة استخدام محتوانا أو منتجاتنا أو خدماتنا.',
@@ -150,22 +150,22 @@
     'By placing an order, you agree to provide accurate information and authorize payment for your purchase.':
       'بإتمامك الطلب، توافقين على تقديم بيانات صحيحة وعلى تفويض الدفع لعملية الشراء.',
     'Khosla reserves the right to cancel or refuse orders if necessary.':
-      'تحتفظ خوصلة بحق إلغاء أو رفض الطلبات عند الضرورة.',
+      'تحتفظ خوسلا بحق إلغاء أو رفض الطلبات عند الضرورة.',
     'Intellectual Property': 'الملكية الفكرية',
     'All website content, including images, logos, text, and branding, belongs to Khosla and may not be used without permission.':
-      'جميع محتويات الموقع، بما فيها الصور والشعارات والنصوص والهوية البصرية، ملك لخوصلة ولا يجوز استخدامها دون إذن.',
+      'جميع محتويات الموقع، بما فيها الصور والشعارات والنصوص والهوية البصرية، ملك لخوسلا ولا يجوز استخدامها دون إذن.',
     'Disclaimer': 'إخلاء مسؤولية',
     'Results from haircare products may vary from person to person. Individual results depend on factors such as hair type, routine, and consistency of use.':
       'قد تختلف نتائج منتجات العناية بالشعر من شخص لآخر، وتعتمد على عوامل مثل نوع الشعر والروتين المتبع وانتظام الاستخدام.',
     'Changes to Terms': 'تعديل الشروط',
     'Khosla reserves the right to update these terms at any time. Changes will be posted on this page.':
-      'تحتفظ خوصلة بحق تحديث هذه الشروط في أي وقت، وتُنشر التعديلات على هذه الصفحة.',
+      'تحتفظ خوسلا بحق تحديث هذه الشروط في أي وقت، وتُنشر التعديلات على هذه الصفحة.',
     'For questions about these Terms of Service, contact us at:':
       'لأي استفسار بخصوص شروط الخدمة، تواصلي معنا عبر:',
 
     /* privacy */
     'At Khosla, we respect your privacy and are committed to protecting your personal information.':
-      'في خوصلة نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.',
+      'في خوسلا نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.',
     'Information We Collect': 'البيانات التي نجمعها',
     'When you visit our website, place an order, subscribe to our emails, or contact us, we may collect information such as:':
       'عند زيارتك للموقع أو إتمام طلب أو الاشتراك في رسائلنا أو التواصل معنا، قد نجمع بيانات مثل:',
@@ -192,7 +192,7 @@
 
     /* shipping */
     'At Khosla, we are committed to getting your haircare products to you safely and efficiently.':
-      'في خوصلة نحرص على وصول منتجات العناية بشعرك إليك بأمان وسرعة.',
+      'في خوسلا نحرص على وصول منتجات العناية بشعرك إليك بأمان وسرعة.',
     'Shipping Time': 'مدة الشحن',
     'Shipping times may vary depending on your location. Once your order has shipped, you will receive tracking information when available.':
       'قد تختلف مدة الشحن حسب موقعك. وبمجرد شحن طلبك ستصلك بيانات التتبع عند توفرها.',
@@ -201,7 +201,7 @@
       'رغم حرصنا على التسليم في الوقت المحدد، قد يحدث تأخير بسبب شركات الشحن أو الأحوال الجوية أو العطلات أو ظروف خارجة عن إرادتنا.',
     'Incorrect Shipping Information': 'بيانات شحن غير صحيحة',
     'Please make sure your shipping address is correct before placing your order. Khosla is not responsible for orders shipped to an incorrect address provided by the customer.':
-      'يرجى التأكد من صحة عنوان الشحن قبل إتمام الطلب. خوصلة غير مسؤولة عن الطلبات المشحونة إلى عنوان خاطئ قدّمه العميل.',
+      'يرجى التأكد من صحة عنوان الشحن قبل إتمام الطلب. خوسلا غير مسؤولة عن الطلبات المشحونة إلى عنوان خاطئ قدّمه العميل.',
     'Lost or Damaged Packages': 'الطرود المفقودة أو التالفة',
     'If your package is lost or arrives damaged, please contact us as soon as possible with your order information so we can assist you.':
       'إذا فُقد طردك أو وصل تالفًا، يرجى التواصل معنا بأسرع وقت مع بيانات طلبك لنتمكن من مساعدتك.',
@@ -231,7 +231,7 @@
      markup, because the link has to survive the swap. */
   var AR_HTML = {
     'Every Khosla product is built on natural, vitamin-rich ingredients chosen to deeply moisturize and nourish. Want the full list for a particular product? Message us and we’ll send it over.':
-      'كل منتج من خوصلة قائم على مكوّنات طبيعية غنية بالفيتامينات، مختارة لترطيب الشعر وتغذيته بعمق. تريدين القائمة الكاملة لمنتج معيّن؟ <a href="contact.html">راسلينا</a> وسنرسلها إليك.',
+      'كل منتج من خوسلا قائم على مكوّنات طبيعية غنية بالفيتامينات، مختارة لترطيب الشعر وتغذيته بعمق. تريدين القائمة الكاملة لمنتج معيّن؟ <a href="contact.html">راسلينا</a> وسنرسلها إليك.',
     'Write to us at khoslanatural@gmail.com and we’ll reply as soon as we can.':
       'راسلينا على <a href="mailto:khoslanatural@gmail.com">khoslanatural@gmail.com</a> وسنرد في أقرب وقت.',
     'khoslanatural@gmail.com, or send us a message through our contact form.':
@@ -251,17 +251,17 @@
   };
 
   var TITLES = {
-    'Khosla - Home': 'خوصلة - الرئيسية',
-    'Khosla - About': 'خوصلة - من نحن',
-    'Khosla - Testimonials': 'خوصلة - آراء العملاء',
-    'Khosla - Contact': 'خوصلة - تواصلي معنا',
-    'Khosla - FAQ': 'خوصلة - الأسئلة الشائعة',
-    'Khosla - Tallow Cream': 'خوصلة - كريم التالو',
-    'Khosla - Leave In': 'خوصلة - ليف إن',
-    'Khosla - Khosla Hair Oil': 'خوصلة - زيت الشعر',
-    'Khosla - Terms of Policy': 'خوصلة - الشروط والأحكام',
-    'Khosla - Privacy Policy': 'خوصلة - سياسة الخصوصية',
-    'Khosla - Shipping Policy': 'خوصلة - سياسة الشحن'
+    'Khosla - Home': 'خوسلا - الرئيسية',
+    'Khosla - About': 'خوسلا - من نحن',
+    'Khosla - Testimonials': 'خوسلا - آراء العملاء',
+    'Khosla - Contact': 'خوسلا - تواصلي معنا',
+    'Khosla - FAQ': 'خوسلا - الأسئلة الشائعة',
+    'Khosla - Tallow Cream': 'خوسلا - كريم التالو',
+    'Khosla - Leave In': 'خوسلا - ليف إن',
+    'Khosla - Khosla Hair Oil': 'خوسلا - زيت الشعر',
+    'Khosla - Terms of Policy': 'خوسلا - الشروط والأحكام',
+    'Khosla - Privacy Policy': 'خوسلا - سياسة الخصوصية',
+    'Khosla - Shipping Policy': 'خوسلا - سياسة الشحن'
   };
 
   function norm(s) { return (s || '').replace(/\s+/g, ' ').trim(); }

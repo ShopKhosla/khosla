@@ -252,7 +252,7 @@ function priceList(slug) {
 function langSwitch() {
   return '  <div class="lang" role="group" aria-label="Language">\n'
     + '    <button type="button" class="lang__btn is-active" data-lang="en" lang="en" aria-pressed="true">English</button>\n'
-    + '    <button type="button" class="lang__btn" data-lang="ar" lang="ar" aria-pressed="false">العربية</button>\n'
+    + '    <button type="button" class="lang__btn" data-lang="ar" aria-pressed="false">Arabic</button>\n'
     + '  </div>\n';
 }
 

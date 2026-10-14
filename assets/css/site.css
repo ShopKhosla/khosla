@@ -847,22 +847,18 @@ html[dir="rtl"] .form__input,
 html[dir="rtl"] .form__textarea,
 html[dir="rtl"] .button { font-family: 'Cairo', sans-serif; }
 
-/* Mirror the shell. */
-html[dir="rtl"] .sidebar { inset: 0 0 0 auto; }
-html[dir="rtl"] .page { margin-left: 0; margin-right: var(--sidebar-w); }
+/* The shell deliberately does NOT mirror. The sidebar stays on the left in
+   both languages, so switching does not throw the furniture across the screen.
+   Only the copy itself reads right to left. */
+html[dir="rtl"] .sidebar { direction: ltr; }
 
 /* The wordmark is a wide-tracked Latin serif; neither tracking nor uppercase
    means anything in Arabic, and both make it unreadable. */
 html[dir="rtl"] .nav__brand {
-  padding: 48px 40px 0 24px;
   font-family: 'Cairo', sans-serif;
   letter-spacing: 0;
   text-transform: none;
 }
-
-html[dir="rtl"] .nav__list { padding: 0 36px 0 12px; }
-html[dir="rtl"] .nav__link { padding-left: 0; padding-right: 4px; }
-html[dir="rtl"] .lang { margin: 28px 36px 32px 12px; padding: 0 4px 0 0; }
 
 /* Alignment follows the reading direction: copy set flush left in English
    should sit flush right in Arabic. Centred and justified stay as they are. */
@@ -874,12 +870,6 @@ html[dir="rtl"] .prices li { flex-direction: row; }
 
 @media (max-width: 1279px) {
   .lang { margin: 0; padding: 0; }
-  html[dir="rtl"] .lang { margin: 0; padding: 0; }
-  html[dir="rtl"] .sidebar { inset: 0 auto auto 0; }
-  html[dir="rtl"] .page { margin-right: 0; }
-  html[dir="rtl"] .nav__brand { padding: 0; margin-right: 0; margin-left: auto; }
-  html[dir="rtl"] .nav__list { padding: 0; }
-  html[dir="rtl"] .nav__link { padding-right: 0; }
 }
 
 /* Prices are a left-to-right run (digits, an en dash, then the currency) sitting
