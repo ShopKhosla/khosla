@@ -247,6 +247,15 @@ function priceList(slug) {
   return '          <ul class="prices">\n' + rows + '\n          </ul>';
 }
 
+/* English / Arabic switch, shown in the header on every page. The page always
+   loads in English; the buttons swap the text in place. */
+function langSwitch() {
+  return '  <div class="lang" role="group" aria-label="Language">\n'
+    + '    <button type="button" class="lang__btn is-active" data-lang="en" lang="en" aria-pressed="true">English</button>\n'
+    + '    <button type="button" class="lang__btn" data-lang="ar" lang="ar" aria-pressed="false">العربية</button>\n'
+    + '  </div>\n';
+}
+
 function hidden(name, value) {
   return '            <input type="hidden" name="' + name + '" value="' + value + '">';
 }
@@ -885,6 +894,10 @@ function build(pg) {
     + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
     + '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3Ai%2Cbi%2C700%2C400&amp;display=swap">\n'
     + '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%20Serif%3Ai%2Cbi%2C700%2C400&amp;display=swap">\n'
+    /* Arabic face for the language toggle. Roboto has no Arabic glyphs, so
+       without this the Arabic falls back to whatever the device happens to
+       have, which on Windows is usually something unflattering. */
+    + '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&amp;display=swap">\n'
     + '<link rel="stylesheet" href="assets/css/site.css">\n'
     + '</head>\n'
     + '<body>\n'
@@ -894,6 +907,7 @@ function build(pg) {
     + '    <a class="nav__brand" href="' + pageFile(ROOT_PAGE) + '">' + d.brand + '</a>\n'
     + '    <ul class="nav__list">\n' + nav + '\n    </ul>\n'
     + '  </nav>\n'
+    + langSwitch()
     + '</header>\n\n'
     + '<div class="page">\n'
     + '  <main class="main" id="main">\n' + mainSecs + '\n  </main>\n\n'
@@ -902,6 +916,7 @@ function build(pg) {
     + (hasCarousel ? '\n<script src="assets/js/carousel.js"></script>\n' : '')
     + (hasForm ? '\n<script src="assets/js/forms.js"></script>\n' : '')
     + (hasReviews ? '\n<script src="assets/js/reviews.js"></script>\n' : '')
+    + '\n<script src="assets/js/i18n.js"></script>\n'
     + '</body>\n</html>\n';
 }
 

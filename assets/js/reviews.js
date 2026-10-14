@@ -12,6 +12,8 @@
 
   var headers = { apikey: KEY, Authorization: 'Bearer ' + KEY };
 
+  function tr(s) { return window.KhoslaI18n ? window.KhoslaI18n.t(s) : s; }
+
   var list = document.querySelector('[data-reviews]');
   var form = document.querySelector('[data-review-form]');
 
@@ -26,6 +28,7 @@
     list.textContent = '';
     if (!rows.length) {
       list.appendChild(el('p', 'reviews__empty', 'No reviews yet. Be the first to share your experience.'));
+      if (window.KhoslaI18n) window.KhoslaI18n.refresh();
       return;
     }
     rows.forEach(function (r) {
@@ -38,6 +41,7 @@
       card.appendChild(who);
       list.appendChild(card);
     });
+    if (window.KhoslaI18n) window.KhoslaI18n.refresh();
   }
 
   function load() {
@@ -56,7 +60,7 @@
   function status(msg, state) {
     var s = form.querySelector('.form__status');
     if (!s) return;
-    s.textContent = msg;
+    s.textContent = tr(msg);
     s.classList.remove('is-error', 'is-success', 'is-busy');
     if (state) s.classList.add('is-' + state);
   }
@@ -126,7 +130,7 @@
 
       var button = form.querySelector('button[type=submit]');
       var original = button ? button.textContent : '';
-      if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+      if (button) { button.disabled = true; button.textContent = tr('Sending…'); }
       status('Sending…', 'busy');
 
       fetch(API, {

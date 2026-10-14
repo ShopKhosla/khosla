@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3Ai%2Cbi%2C700%2C400&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%20Serif%3Ai%2Cbi%2C700%2C400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&amp;display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -23,6 +24,10 @@
         <li class="nav__item"><a class="nav__link" href="contact.html">Contact</a></li>
     </ul>
   </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" class="lang__btn is-active" data-lang="en" lang="en" aria-pressed="true">English</button>
+    <button type="button" class="lang__btn" data-lang="ar" lang="ar" aria-pressed="false">العربية</button>
+  </div>
 </header>
 
 <div class="page">
@@ -94,5 +99,7 @@
     </section>
   </footer>
 </div>
+
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>

@@ -6,10 +6,13 @@
 
   var ENDPOINT = 'https://api.web3forms.com/submit';
 
+  /* Arabic for the messages below, when the visitor has switched language. */
+  function tr(s) { return window.KhoslaI18n ? window.KhoslaI18n.t(s) : s; }
+
   function setStatus(form, message, state) {
     var el = form.querySelector('.form__status');
     if (!el) return;
-    el.textContent = message;
+    el.textContent = tr(message);
     el.classList.remove('is-error', 'is-success', 'is-busy');
     if (state) el.classList.add('is-' + state);
   }
@@ -28,7 +31,7 @@
       var data = {};
       new FormData(form).forEach(function (value, key) { data[key] = value; });
 
-      if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+      if (button) { button.disabled = true; button.textContent = tr('Sending…'); }
       setStatus(form, 'Sending…', 'busy');
 
       fetch(ENDPOINT, {

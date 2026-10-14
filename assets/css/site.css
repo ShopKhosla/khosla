@@ -43,16 +43,30 @@ body {
 
 img { max-width: 100%; }
 
+/* Hidden by clipping rather than by a large negative offset: an offset pushes
+   the document 10,000px wide in right-to-left, where the page starts scrolled
+   to the right and the visitor can drag sideways into empty space. */
 .skip-link {
   position: absolute;
-  left: -9999px;
   top: 0;
+  left: 0;
   z-index: 100;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
   padding: 12px 16px;
   background: var(--sidebar-bg);
   color: var(--sidebar-fg);
 }
-.skip-link:focus { left: 0; }
+
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+}
 
 /* --------------------------------------------------------------- Sidebar */
 
@@ -788,3 +802,99 @@ h2.t[id] { scroll-margin-top: 24px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ------------------------------------------------- Language switch & RTL */
+
+/* Sits under the nav in the sidebar on desktop, and inline in the bar on
+   narrow screens. The page always loads English; these only swap what is
+   already rendered. */
+.lang {
+  display: flex;
+  gap: 8px;
+  margin: 28px 12px 32px 36px;
+  padding-left: 4px;
+}
+
+.lang__btn {
+  flex: 0 0 auto;
+  padding: 5px 13px;
+  border: 1px solid rgba(249, 249, 249, .35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sidebar-fg);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.lang__btn[lang="ar"] { font-family: 'Cairo', sans-serif; }
+.lang__btn:hover { border-color: var(--sidebar-fg); }
+
+.lang__btn.is-active {
+  background: var(--sidebar-fg);
+  border-color: var(--sidebar-fg);
+  color: var(--sidebar-bg);
+  font-weight: 700;
+}
+
+/* Arabic needs a face with Arabic glyphs; Roboto has none, so without this
+   the text falls back to whatever the device happens to carry. */
+html[dir="rtl"] body,
+html[dir="rtl"] .block,
+html[dir="rtl"] .t,
+html[dir="rtl"] .form__input,
+html[dir="rtl"] .form__textarea,
+html[dir="rtl"] .button { font-family: 'Cairo', sans-serif; }
+
+/* Mirror the shell. */
+html[dir="rtl"] .sidebar { inset: 0 0 0 auto; }
+html[dir="rtl"] .page { margin-left: 0; margin-right: var(--sidebar-w); }
+
+/* The wordmark is a wide-tracked Latin serif; neither tracking nor uppercase
+   means anything in Arabic, and both make it unreadable. */
+html[dir="rtl"] .nav__brand {
+  padding: 48px 40px 0 24px;
+  font-family: 'Cairo', sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+html[dir="rtl"] .nav__list { padding: 0 36px 0 12px; }
+html[dir="rtl"] .nav__link { padding-left: 0; padding-right: 4px; }
+html[dir="rtl"] .lang { margin: 28px 36px 32px 12px; padding: 0 4px 0 0; }
+
+/* Alignment follows the reading direction: copy set flush left in English
+   should sit flush right in Arabic. Centred and justified stay as they are. */
+html[dir="rtl"] .ta-l { text-align: right; }
+html[dir="rtl"] .ta-r { text-align: left; }
+
+html[dir="rtl"] .page-nav { padding-right: 0; }
+html[dir="rtl"] .prices li { flex-direction: row; }
+
+@media (max-width: 1279px) {
+  .lang { margin: 0; padding: 0; }
+  html[dir="rtl"] .lang { margin: 0; padding: 0; }
+  html[dir="rtl"] .sidebar { inset: 0 auto auto 0; }
+  html[dir="rtl"] .page { margin-right: 0; }
+  html[dir="rtl"] .nav__brand { padding: 0; margin-right: 0; margin-left: auto; }
+  html[dir="rtl"] .nav__list { padding: 0; }
+  html[dir="rtl"] .nav__link { padding-right: 0; }
+}
+
+/* Prices are a left-to-right run (digits, an en dash, then the currency) sitting
+   inside right-to-left copy. Without isolation the bidi algorithm reorders the
+   whole run and "250 - 1,100" comes out backwards. */
+html[dir="rtl"] .price,
+html[dir="rtl"] .prices .size,
+html[dir="rtl"] .prices .amount {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .prices .amount { text-align: left; }
+
+/* The label sets text-align explicitly, so unlike the inputs (which use
+   `start`) it does not follow the reading direction on its own. */
+html[dir="rtl"] .form__label { text-align: right; }
+html[dir="rtl"] .form__hint { text-align: right; }
