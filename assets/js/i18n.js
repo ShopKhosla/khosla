@@ -31,7 +31,7 @@
     /* home */
     'Khosla is a haircare brand built on natural ingredients that nourish and deeply moisturize for healthier-looking hair.':
       'خوسلا علامة للعناية بالشعر قائمة على مكوّنات طبيعية تغذّي الشعر وترطّبه بعمق ليبدو أكثر صحة.',
-    'Tallow Cream': 'كريم التالو',
+    'Tallow Cream': 'كريم كركار',
     'Leave In': 'ليف إن',
     'Hair oil': 'زيت الشعر',
     'Place an Order': 'اطلبي الآن',
@@ -119,7 +119,7 @@
     'You can reach us at:': 'يمكنك التواصل معنا عبر:',
 
     /* products */
-    'Khosla Tallow Cream': 'كريم التالو من خوسلا',
+    'Khosla Tallow Cream': 'كريم كركار من خوسلا',
     'Khosla Leave In': 'ليف إن من خوسلا',
     'Khosla Hair Oil': 'زيت الشعر من خوسلا',
     '250 g': '250 جم',
@@ -256,7 +256,7 @@
     'Khosla - Testimonials': 'خوسلا - آراء العملاء',
     'Khosla - Contact': 'خوسلا - تواصلي معنا',
     'Khosla - FAQ': 'خوسلا - الأسئلة الشائعة',
-    'Khosla - Tallow Cream': 'خوسلا - كريم التالو',
+    'Khosla - Tallow Cream': 'خوسلا - كريم كركار',
     'Khosla - Leave In': 'خوسلا - ليف إن',
     'Khosla - Khosla Hair Oil': 'خوسلا - زيت الشعر',
     'Khosla - Terms of Policy': 'خوسلا - الشروط والأحكام',
