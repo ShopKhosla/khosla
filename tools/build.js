@@ -45,6 +45,9 @@ const COPY = {
 const HTML_FIXES = [
   // No payment information is collected: nothing on the site takes payment.
   [/<li>(?:(?!<\/li>).)*Payment information(?:(?!<\/li>).)*<\/li>/g, ''],
+  /* The subscriber discount was withdrawn. Both halves of the offer sit in
+     their own spans, so drop the pair and leave the sentence before them. */
+  [/<span[^>]*>Enjoy 10% off your first order<\/span>\s*<span[^>]*> when you subscribe\.<\/span>/g, ''],
 ];
 
 /* Content dropped from the original export, matched on a distinctive phrase.
@@ -268,8 +271,8 @@ function subscribeForm() {
   return [
     '          <form class="form form--subscribe" data-w3form data-success="Thanks for subscribing. Check your inbox.">',
     hidden('access_key', W3F_KEY),
-    hidden('subject', 'New subscriber, 10% off first order'),
-    hidden('from_name', 'First Order - 10% discount for subscriber.'),
+    hidden('subject', 'New newsletter subscriber'),
+    hidden('from_name', 'New Subscriber'),
     botcheck(),
     '            <label class="form__label" for="subscribe-email">Email address</label>',
     '            <div class="form__row">',

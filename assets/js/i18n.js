@@ -39,8 +39,8 @@
     'Message us with the products, sizes and quantities you’d like and where to ship them. We’ll reply with your total and payment details, and your order ships as soon as payment is received.':
       'راسلينا وأخبرينا بالمنتجات والأحجام والكميات التي ترغبين بها وعنوان الشحن. سنرد عليكِ بإجمالي الطلب وتفاصيل الدفع، ويُشحن طلبك فور استلام المبلغ.',
     'Stay Connected': 'ابقي على تواصل',
-    'Get product updates, exclusive discounts, and skincare inspiration delivered straight to your inbox. Enjoy 10% off your first order when you subscribe.':
-      'اشتركي لتصلك آخر أخبار المنتجات وعروض حصرية وأفكار للعناية ببشرتك مباشرة إلى بريدك. واحصلي على خصم 10% على طلبك الأول عند الاشتراك.',
+    'Get product updates, exclusive discounts, and skincare inspiration delivered straight to your inbox.':
+      'اشتركي لتصلك آخر أخبار المنتجات وعروض حصرية وأفكار للعناية ببشرتك مباشرة إلى بريدك.',
     'Email address': 'البريد الإلكتروني',
     'Subscribe': 'اشتراك',
 
