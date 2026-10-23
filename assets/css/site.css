@@ -869,7 +869,15 @@ html[dir="rtl"] .page-nav { padding-right: 0; }
 html[dir="rtl"] .prices li { flex-direction: row; }
 
 @media (max-width: 1279px) {
-  .lang { margin: 0; padding: 0; }
+  .lang { margin: 2px 0 0; padding: 0 32px 18px; }
+}
+
+@media (max-width: 767px) {
+  .lang { padding: 0 24px 16px; }
+}
+
+@media (max-width: 479px) {
+  .lang { padding: 0 16px 16px; }
 }
 
 /* Prices are a left-to-right run (digits, an en dash, then the currency) sitting
